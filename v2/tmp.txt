@@ -1,0 +1,7 @@
+1 2 3 4 
+100.3000031 200.6000061 200.30000000000001 400.60000000000002 
+3.1415901 6.28318000000000 13 26 Hello\sWorld 
+4 8 12 
+
+15 9 8 7 6 5 4 3 2 1 0 -1 -2 -3 -4 -5 
+4 hello\sworld 'tis\sbut\sa\sscratch youre\smother\swas\sa\shamster an\safrican\sor\n\teuropean\sswallow? 
