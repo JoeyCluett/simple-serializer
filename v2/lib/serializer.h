@@ -328,18 +328,62 @@ public:
         return ser;
     }
 
-    friend serializer& operator>>(serializer& ser, std::vector<std::string>& data) {
+    friend serializer& operator>>(serializer& ser, std::vector<long int>& data) {
         long int sz;
         ser >> sz;
         data.clear();
 
         for(int i = 0; i < sz; i++) {
-            std::string tmp;
+            long int tmp;
             ser >> tmp;
             data.push_back(tmp);
         }
 
         return ser;
     }
+
+    friend serializer& operator>>(serializer& ser, std::vector<std::string>& data) {
+        long int sz;
+        ser >> sz;
+        data.clear();
+
+        std::string tmp;
+
+        for(int i = 0; i < sz; i++) {
+            ser >> tmp;
+            data.push_back(tmp);
+        }
+
+        return ser;
+    }
+
+    friend serializer& operator>>(serializer& ser, std::vector<float>& data) {
+        long int sz;
+        ser >> sz;
+        data.clear();
+
+        for(int i = 0; i < sz; i++) {
+            float tmp;
+            ser >> tmp;
+            data.push_back(tmp);
+        }
+
+        return ser;
+    }
+
+    friend serializer& operator>>(serializer& ser, std::vector<double>& data) {
+        long int sz;
+        ser >> sz;
+        data.clear();
+
+        for(int i = 0; i < sz; i++) {
+            double tmp;
+            ser >> tmp;
+            data.push_back(tmp);
+        }
+
+        return ser;
+    }
+
 
 };

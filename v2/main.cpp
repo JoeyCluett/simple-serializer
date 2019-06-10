@@ -23,6 +23,7 @@ int main(int argc, char* argv[]) {
     vector<int> sample_int_vector = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5 };
     vector<std::string> sample_string_vector = { 
         "hello world", 
+        "nobody expects the spanish inquisition!",
         "'tis but a scratch", 
         "youre mother was a hamster",
         "an african or\n\teuropean swallow?"
