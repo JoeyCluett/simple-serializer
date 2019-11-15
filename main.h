@@ -2,6 +2,46 @@
 
 #include <serialize/serializer.h>
 #include <serialize/serializable.h>
+#include <map>
+
+using std::endl;
+
+class customer_t : public serializable {
+private:
+    std::string firstname, lastname;
+
+public:
+    // inherited from serializable
+    void serialize(serializer& ser) override {
+        ser << lastname << firstname << endl;
+    }
+
+    void deserialize(serializer& ser) override {
+        ser >> lastname >> firstname;
+    }
+
+};
+
+class customer_db {
+private:
+
+    std::map<uuid_t, customer_t> data;
+
+public:
+
+    customer_db(std::string filename);
+
+    auto begin(void) -> std::map<uuid_t, customer_t>::iterator {
+        return this->data.begin();
+    }
+
+    auto end(void) -> std::map<uuid_t, customer_t>::iterator {
+        return this->data.end();
+    }
+
+    
+
+};
 
 struct integer_collection : public serializable {
 
@@ -20,7 +60,7 @@ struct integer_collection : public serializable {
         os << "\tb : " << mcr.b << std::endl;
         os << "\tc : " << mcr.c << std::endl;
         os << "\td : " << mcr.d << std::endl;
-        
+
         return os;
     }
 
@@ -55,7 +95,7 @@ struct float_collection : public serializable {
         os << "\tb : " << ic.b << std::endl;
         os << "\tc : " << ic.c << std::endl;
         os << "\td : " << ic.d << std::endl;
-        
+
         return os;
     }
 
@@ -93,7 +133,7 @@ struct mixed_collection : public serializable {
         os << "\tc : " << mcr.c << std::endl;
         os << "\td : " << mcr.d << std::endl;
         os << "\te : " << mcr.e << std::endl;
-        
+
         return os;
     }
 
@@ -120,11 +160,11 @@ struct array_collection : public serializable {
 
     friend std::ostream& operator<<(std::ostream& os, array_collection& ac) {
         os << "array_collection\n";
-        os << 
-            "\ta[0] : " << ac.a[0] << std::endl << 
-            "\ta[1] : " << ac.a[1] << std::endl << 
+        os <<
+            "\ta[0] : " << ac.a[0] << std::endl <<
+            "\ta[1] : " << ac.a[1] << std::endl <<
             "\ta[2] : " << ac.a[2] << std::endl;
-        
+
         return os;
     }
 
@@ -138,4 +178,3 @@ struct array_collection : public serializable {
     }
 
 };
-
